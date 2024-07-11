@@ -1,22 +1,32 @@
-(ns otus-02.homework.common-child)
+(ns otus-02.homework.common-child
+  (:require [clojure.set :refer [intersection]]))
+
+(defn common-chars
+  [f s]
+  (let [first (set f) second (set s)] (intersection first second)))
+
+(defn all-subseq
+  [s]
+  (set (for [start (range (count s))
+             end (range (inc start) (inc (count s)))]
+         (take (- end start) (drop start s)))))
+
+(defn common-child-length
+  [f s]
+  (let [common-set (common-chars f s)
+        filtered-f (-> common-set
+                       (filter f)
+                       all-subseq)
+        filtered-s (-> common-set
+                       (filter s)
+                       all-subseq)]
+    ((fnil #(apply max %) [0])
+      (seq (map count (intersection filtered-f filtered-s))))))
 
 
-;; Строка называется потомком другой строки,
-;; если она может быть образована путем удаления 0 или более символов из другой строки.
-;; Буквы нельзя переставлять.
-;; Имея две строки одинаковой длины, какую самую длинную строку можно построить так,
-;; чтобы она была потомком обеих строк?
-
-;; Например 'ABCD' и 'ABDC'
-
-;; Эти строки имеют два дочерних элемента с максимальной длиной 3, ABC и ABD.
-;; Их можно образовать, исключив D или C из обеих строк.
-;; Ответ в данном случае - 3
-
-;; Еще пример HARRY и SALLY. Ответ будет - 2, так как общий элемент у них AY
-
-
-(defn common-child-length [first-string second-string])
-
-
-
+(comment
+  (doseq [test [(= (common-child-length "SHINCHAN" "NOHARAAA") 3)
+                (= (common-child-length "HARRY" "SALLY") 2)
+                (= (common-child-length "AA" "BB") 0)
+                (= (common-child-length "ABCDEF" "FBDAMN") 2)]]
+    (prn test)))
