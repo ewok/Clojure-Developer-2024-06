@@ -165,7 +165,7 @@ pellentesque.
 ; (out) "Elapsed time: 29.749669 msecs"
 ; (out) "Elapsed time: 52.491599 msecs"
 
-;; Without Lorem ipsum
+;; With Lorem ipsum
 ; (out) "Elapsed time: 391.425171 msecs"
 ; (out) "Elapsed time: 475.359696 msecs"
 ; (out) "Elapsed time: 59.689839 msecs"
