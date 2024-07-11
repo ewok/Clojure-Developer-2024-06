@@ -21,6 +21,7 @@
                  normalize
                  set))))
 
+;; optimized for large text
 (defn is-pangram-1
   [^String test-string]
   (loop [rest-alpha alpha
