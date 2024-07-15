@@ -10,7 +10,7 @@
 
 (defn gen-route
   "Returns lazy seq of route for Siamese method.
-  n - square size. Can be only odd.
+  n - square size.
   Creates set to check if coord is already taken."
   ([n] (let [x (int (/ n 2))] (gen-route n nil nil x 0 #{})))
   ([n p-x p-y x y step-set]
