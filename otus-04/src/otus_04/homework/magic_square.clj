@@ -38,11 +38,9 @@
   горизонталей и диагоналей длиной в n должны быть одинаковы."
   [n]
   (let [matrix (make-array Integer/TYPE n n)]
-    (doseq [[[x y] i] (map list (gen-route n) (range 1 (inc (* n n))))]
-      (aset matrix (int y) (int x) (int i)))
+    (doseq [[i [x y]] (map-indexed list (gen-route n))]
+      (aset matrix (int y) (int x) (int (inc i))))
     (mapv vec matrix)))
-
-
 
 (comment
   ; 17 24  1  8 15
