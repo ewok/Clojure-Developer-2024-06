@@ -97,7 +97,7 @@
 ++------++
 +++++-++++
 +++++-++++
-LONDON;DELHI;ICELAND;ANKARA") ; works
+LONDON;DELHI;ICELAND;ANKARA")
   (solve
     "++++++-+++
 ++------++
@@ -109,6 +109,4 @@ LONDON;DELHI;ICELAND;ANKARA") ; works
 ++++++++-+
 ++++++++-+
 ++++++++-+
-ICELAND;MEXICO;PANAMA;ALMATY
-") ; does not work
-)
+ICELAND;MEXICO;PANAMA;ALMATY"))
