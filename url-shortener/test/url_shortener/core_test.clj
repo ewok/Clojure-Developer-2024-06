@@ -22,7 +22,8 @@
     -1 "")
   (is (thrown-with-msg? Exception
                         #"cannot be cast to class java.lang.Number"
-                        (int->id "asdf"))))
+                        (int->id "asdf")))
+  (is (thrown-with-msg? Exception #"because [\"]x[\"] is null" (int->id nil))))
 
 (deftest test-id->int
   (are [input expected] (= (id->int input) expected)
