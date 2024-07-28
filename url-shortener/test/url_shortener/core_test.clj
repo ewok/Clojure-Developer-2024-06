@@ -1,6 +1,5 @@
 (ns url-shortener.core-test
-  (:require [clojure.test :refer
-             [are deftest is run-tests testing use-fixtures]]
+  (:require [clojure.test :refer [are deftest is testing use-fixtures]]
             [matcher-combinators.test]
             [url-shortener.core :refer
              [alphabet-size id->int int->id list-all shorten! url-for]]))
