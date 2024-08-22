@@ -51,7 +51,7 @@
 ; "TYER — Year"
 (defmethod decode-frame :TYER
   [data]
-  (assoc data :title "Year" :body (Integer/parseInt (apply str (:body data)))))
+  (assoc data :title "Year" :body (Integer/parseInt (decode-text (:enc-byte data) (:body data)))))
 
 ; "TCON — Genre"
 (defmethod decode-frame :TCON
