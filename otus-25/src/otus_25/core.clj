@@ -1,5 +1,5 @@
 (ns otus-25.core
-  (:require [clojure.walk :refer [macroexpand-all]])
+  (:require [clojure.walk :refer [macroexpand-all postwalk]])
   (:gen-class))
 
 ;; * Макросы
@@ -41,8 +41,8 @@
      (do ~@(apply concat (map (fn [_] body)) [1 2 3]))))
 
 (macroexpand-1 (when? true
-                 (println 1)
-                 (println 2)))
+                      (println 1)
+                      (println 2)))
 
 ;; ** анафорические макросы
 
@@ -75,3 +75,40 @@
 
 (comment
   (@#some-macro '(some-macro x) {'x nil} 'x))
+
+(defn reverse-it [sss]
+  (map identity sss))
+
+(reverse-it
+ '(qesod [gra (egnar 5)]
+         (nltnirp (cni gra))))
+
+(reverse-it
+ (macroexpand reverse
+              '(qesod [gra (egnar 5)]
+                      (nltnirp (cni gra)))))
+
+(defmacro => [head & body]
+  (let [funcs# (reverse ~@body)]
+    `((comp ~funcs#) ~head)))
+
+(=> [1 2 3]
+    (conj 4)
+    reverse
+    println)
+; (4 3 2 1)
+
+(=> [1 2 3]
+    (conj 4)
+    reverse
+    println)
+; (4 3 2 1)
+
+(macroexpand
+ '(=> [1 2 3]
+      (conj 4)
+      reverse
+      println))
+
+(postwalk)
+<F2>pppppppppppppp

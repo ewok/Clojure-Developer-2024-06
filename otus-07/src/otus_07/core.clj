@@ -52,8 +52,8 @@
                     "-"
                     (str/upper-case a))))
 
-(str/split "q12w3e4r5t6y7u8i9o0p" #"\d+" 5)
 
+(str/split "q12w3e4r5t6y7u8i9o0p" #"\d+" 5)
 
 ;; 
 ;; Иммутабельные очереди (FIFO)

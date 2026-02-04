@@ -3,7 +3,6 @@
   (:import (java.io File BufferedReader)))
 
 
-
 ;; otus-02.core    имя нейспейса
 ;; otus_02/core    путь на файловой системе
 
@@ -27,8 +26,6 @@
 (in-ns 'user)
 
 (in-ns 'otus-02.core)
-
-
 
 ;; подключаем другой неймспейс
 (require '[otus-02.conditionals])

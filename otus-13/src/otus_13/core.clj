@@ -13,14 +13,13 @@
 
 (slurp "https://httpbin.org/json")
 
-
 ;; GET, POST, PUT, DELETE
 
 (http/get (make-url "json"))
 
 
 (http/get (make-url "json")
-          {:as :json})
+         {:as :json})
 
 
 (http/get (make-url "headers")
